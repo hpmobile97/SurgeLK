@@ -44,10 +44,9 @@ spotify-json = type=http-request,pattern=^https:\/\/spclient\.wg\.spotify\.com\/
 spotify-proto = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js,script-update-interval=0
 
 #************************************#
-#Camera360-Mix
-#hostname = *.camera360.com
-Camera360 = type=http-response,pattern=^https?:\/\/.*\.camera360\.com\/(api\/(order\/purchase|iap\/check-receipt)|v\d\/operational-positions),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/camera360.js,script-update-interval=0
-Camera360-Mix = requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/mix.js,type=http-response,pattern=^https:\/\/cdn-bm\.camera360\.com\/api\/mix\/recovery
+#Wallpaper
+#hostname = premium*.truecaller.com
+Wallpaper = type=http-response,pattern=^https:\/\/billing-ios\.wallpaperscraft\.com\/verify_receipt\/remove_ads$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/WallCraftFProCrack.js
 
 #************************************#
 #Wink
@@ -67,7 +66,7 @@ NetSpeed = type=generic,script-path=https://raw.githubusercontent.com/lonely0811
 
 
 [Map Local]
-^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data="https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/blank.txt"
+^https?:\/\/[\w-]+.googlevideo\.com\/initplayback data-type=text data="" status-code=204
 
 [MITM]
-hostname = %APPEND% api-sub.meitu.com, premium*.truecaller.com, nicegram.cloud, sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, *.googlevideo.com, youtubei.googleapis.com, *.camera360.com
+hostname = %APPEND% api-sub.meitu.com, *.wallpaperscraft.com, premium*.truecaller.com, nicegram.cloud, sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, *.googlevideo.com, youtubei.googleapis.com
