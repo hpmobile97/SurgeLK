@@ -62,4 +62,4 @@ NetSpeed = type=generic,script-path=https://raw.githubusercontent.com/lonely0811
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data=""
 
 [MITM]
-hostname = %APPEND% api-sub.meitu.com, *.wallpaperscraft.com, premium*.truecaller.com, nicegram.cloud, sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, *.googlevideo.com, youtubei.googleapis.com
+hostname = %APPEND%  *.wallpaperscraft.com, premium*.truecaller.com, nicegram.cloud, sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, *.googlevideo.com, youtubei.googleapis.com
