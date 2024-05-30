@@ -30,12 +30,12 @@ youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.c
 #************************************#
 #Camscanner
 #hostname = ap*.intsig.net
-Camscanner = requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/camscaner.js,type=http-response,pattern= https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_prop
+Camscanner = requires-body=1,script-path=https://raw.githubusercontent.com/hpmobile97/SurgeLK/main/scripts/zozocao/camscaner.js,type=http-response,pattern= https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_prop
 
 #************************************#
 #Nicegram
 #hostname = nicegram.cloud
-Nicegram = type=http-response,pattern=^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/Nicegram.js,script-update-interval=0
+Nicegram = type=http-response,pattern=^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess),requires-body=1,max-size=0,script-path=https://github.com/lonely0811/olsd/raw/main/nice1.js,script-update-interval=0
 
 #************************************#
 #SpotifyPremium
@@ -45,24 +45,18 @@ spotify-proto = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com
 
 #************************************#
 #Wallpaper
-#hostname = premium*.truecaller.com
-Wallpaper = type=http-response,pattern=^https:\/\/billing-ios\.wallpaperscraft\.com\/verify_receipt\/remove_ads$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/WallCraftFProCrack.js
+#hostname = *.wallpaperscraft.com
+Wallpaper = type=http-response,pattern=^https:\/\/billing-ios\.wallpaperscraft\.com\/verify_receipt\/remove_ads$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yqc007/QuantumultX/master/WallCraftFProCrack.js
 
 #************************************#
 #Wink
 #hostname = api-sub.meitu.com
-Wink = type=http-response,pattern=^https?:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info_by_group\.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/wink.js
-
-#************************************#
-
-#Chatgp5
-#hostname = api.chatgp5.cc
-http-response ^https?:\/\/api\.chatgp5\.cc\/app\/user\/getCurrentInfo requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/chat.js, tag=Chatgp5
+Wink = type=http-response,pattern=^https?:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info_by_group\.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/hpmobile97/SurgeLK/main/scripts/zozocao/wink.js
 
 #************************************#
 #Truecaller
 #hostname = premium*.truecaller.com
-Truecaller = type=http-response,pattern=^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/truecaller.js
+Truecaller = type=http-response,pattern=^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/truecall.js
 
 #************************************#
 #Panel Network
@@ -75,4 +69,4 @@ NetSpeed = type=generic,script-path=https://raw.githubusercontent.com/lonely0811
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data=""
 
 [MITM]
-hostname = %APPEND% api-sub.meitu.com, *.wallpaperscraft.com, premium*.truecaller.com, nicegram.cloud, sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, *.googlevideo.com, api.chatgp5.cc, youtubei.googleapis.com
+hostname = %APPEND% api-sub.meitu.com, *.wallpaperscraft.com, premium*.truecaller.com, nicegram.cloud, sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, *.googlevideo.com, youtubei.googleapis.com
