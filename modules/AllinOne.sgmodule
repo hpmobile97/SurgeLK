@@ -30,7 +30,7 @@ youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.c
 #************************************#
 #Camscanner
 #hostname = ap*.intsig.net
-Camscanner = requires-body=1,script-path=https://raw.githubusercontent.com/hpmobile97/SurgeLK/main/scripts/zozocao/camscaner.js,type=http-response,pattern= https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_prop
+Camscanner = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/CamScanner.js,type=http-response,pattern= https:\/\/(api|api-cs)\.intsig\.net\/purchase\/cs\/query_property\?
 
 #************************************#
 #Nicegram
