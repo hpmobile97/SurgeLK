@@ -14,6 +14,10 @@ ip-api.com = 208.95.112.1
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
 
+[Header Rewrite]
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) = delete header X-RevenueCat-ETag
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) = delete header x-revenuecat-etag
+
 [Script]
 #Sub-Store
 #hostname = sub.store
@@ -42,6 +46,11 @@ spotify-proto = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com
 #Chatgp5
 #hostname = api.chatgp5.cc
 http-response ^https?:\/\/api\.chatgp5\.cc\/app\/user\/getCurrentInfo requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/chat.js, tag=Chatgp5
+
+#************************************#
+#Locket Gold
+#hostname = api.revenuecat.com
+Locket_Gold_AQVPN = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$),requires-body=1,max-size=0,script-path=https://download.aqvpn.eu.org/script/apptesters/AutoRC.js,update-interval=5
 
 #************************************#
 #Camscanner
@@ -74,4 +83,4 @@ NetSpeed = type=generic,script-path=https://raw.githubusercontent.com/lonely0811
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data=""
 
 [MITM]
-hostname = %APPEND%  *.wallpaperscraft.com, api-sub.meitu.com, premium*.truecaller.com, nicegram.cloud, sub.store, ap*.intsig.net, api.chatgp5.cc, spclient.wg.spotify.com, *.googlevideo.com, youtubei.googleapis.com
+hostname = %APPEND%  *.wallpaperscraft.com, api-sub.meitu.com, premium*.truecaller.com, nicegram.cloud, sub.store, ap*.intsig.net, api.chatgp5.cc, spclient.wg.spotify.com, api.revenuecat.com, *.googlevideo.com, youtubei.googleapis.com
