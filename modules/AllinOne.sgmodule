@@ -34,7 +34,7 @@ youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.c
 #************************************#
 #Nicegram
 #hostname = nicegram.cloud
-Nicegram = type=http-response,pattern=^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess),requires-body=1,max-size=0,script-path=https://github.com/lonely0811/olsd/raw/main/nice1.js,script-update-interval=0
+Nicegram = type=http-response,pattern=^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/Nicegram.js,script-update-interval=0
 
 #************************************#
 #SpotifyPremium
