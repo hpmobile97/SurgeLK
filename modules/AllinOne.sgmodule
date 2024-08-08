@@ -32,45 +32,15 @@ youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com
 youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.response.preview.js,argument="{"lyricLang":"zh-Hans","captionLang":"zh-Hans","blockUpload":true,"blockImmersive":true,"debug":false}"
 
 #************************************#
-#Nicegram
-#hostname = nicegram.cloud
-Nicegram = type=http-response,pattern=^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/Nicegram.js,script-update-interval=0
-
-#************************************#
 #SpotifyPremium
 #hostname = spclient.wg.spotify.com
 spotify-json = type=http-request,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
 spotify-proto = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js,script-update-interval=0
 
 #************************************#
-#Chatgp5
-#hostname = api.chatgp5.cc
-http-response ^https?:\/\/api\.chatgp5\.cc\/app\/user\/getCurrentInfo requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/chat.js, tag=Chatgp5
-
-#************************************#
-#Revenuecat
-#hostname = api.revenuecat.com
-Revenuecat = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat.js,script-update-interval=-1
-
-#************************************#
-#Camscanner
-#hostname = ap*.intsig.net
-Camscanner = requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/camscaner.js,type=http-response,pattern= https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_prop
-
-#************************************#
-#Wink
-#hostname = api-sub.meitu.com
-Wink = type=http-response,pattern=^https?:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info_by_group\.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/wink.js
-
-#************************************#
-#Wallpaper
-#hostname = premium*.truecaller.com
-Wallpaper = type=http-response,pattern=^https:\/\/billing-ios\.wallpaperscraft\.com\/verify_receipt\/remove_ads$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/WallCraftFProCrack.js
-
-#************************************#
 #Truecaller
 #hostname = premium*.truecaller.com
-Truecaller = type=http-response,pattern=^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/truecaller.js
+Truecaller = type=http-response,pattern=^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/truecall.js
 
 #************************************#
 #Panel Network
@@ -83,4 +53,4 @@ NetSpeed = type=generic,script-path=https://raw.githubusercontent.com/lonely0811
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data=""
 
 [MITM]
-hostname = %APPEND%  *.wallpaperscraft.com, api-sub.meitu.com, premium*.truecaller.com, nicegram.cloud, sub.store, ap*.intsig.net, api.chatgp5.cc, spclient.wg.spotify.com, api.revenuecat.com, *.googlevideo.com, youtubei.googleapis.com
+hostname = %APPEND%  premium*.truecaller.com, sub.store, spclient.wg.spotify.com, *.googlevideo.com, youtubei.googleapis.com
