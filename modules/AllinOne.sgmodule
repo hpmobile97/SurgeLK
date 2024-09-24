@@ -48,6 +48,11 @@ Truecaller = type=http-response,pattern=^https://premium-(.+)\.truecaller\.com/v
 RevenueCat = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$),requires-body=1,script-path=https://raw.githubusercontent.com/libanhsxbaoil/zozocao/refs/heads/main/Scripts/revenuecat.js, tag=RevenueCat
 
 #************************************#
+#Chatgp5
+#hostname = api.chatgp5.cc
+Chatgp5 = type=http-response,pattern=^https?:\/\/api\.chatgp5\.cc\/app\/user\/getCurrentInfo,requires-body=1,script-path=https://raw.githubusercontent.com/libanhsxbaoil/zozocao/refs/heads/main/Scripts/chat.js, tag=Chatgp5
+
+#************************************#
 #Panel Network
 net-info-panel.js=script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/net.js,type=generic,timeout=30
 ReloadProfile = type=generic,timeout=10,script-path= https://raw.githubusercontent.com/lonely0811/olsd/main/Reloadconfig.js ,argument=icon=square.and.arrow.down.fill&color=#f6c970
