@@ -36,11 +36,6 @@ Sub-Store Sync=type=cron,cronexp=55 23 * * *,wake-system=1,timeout=120,script-pa
 http-response ^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$ script-path=https://raw.githubusercontent.com/libanhsxbaoil/zozocao/refs/heads/main/Scripts/yt.js,requires-body=true,binary-body-mode=true,tag=YouTubeResponse
 
 #************************************#
-#Nicegram
-#hostname = nicegram.cloud
-Nicegram = type=http-response,pattern=^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/libanhsxbaoil/zozocao/refs/heads/main/Scripts/Nicegram.js,script-update-interval=0, tag=Nicegram
-
-#************************************#
 #Spotify
 #hostname = spclient.wg.spotify.com
 spotify-json = type=http-request,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
@@ -57,11 +52,6 @@ Truecaller = type=http-response,pattern=^https://premium-(.+)\.truecaller\.com/v
 RevenueCat = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$),requires-body=1,script-path=https://raw.githubusercontent.com/libanhsxbaoil/zozocao/refs/heads/main/Scripts/revenuecat.js, tag=RevenueCat
 
 #************************************#
-#Chatgp5
-#hostname = api.chatgp5.cc
-Chatgp5 = type=http-response,pattern=^https?:\/\/api\.chatgp5\.cc\/app\/user\/getCurrentInfo,requires-body=1,script-path=https://raw.githubusercontent.com/libanhsxbaoil/zozocao/refs/heads/main/Scripts/chat.js, tag=Chatgp5
-
-#************************************#
 #Adguard Pro
 #hostname = mobile-api.adguard.org
 AdGuard=type=http-response,pattern=^https?:\/\/mobile-api\.adguard\.org\/api\/.+\/ios_validate_receipt,requires-body=1,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/ad.js
@@ -76,4 +66,4 @@ NetSpeed = type=generic,script-path=https://raw.githubusercontent.com/lonely0811
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=200
 
 [MITM]
-hostname = %APPEND% api-sub.meitu.com, purchase-*-api.*.com, user-kaji-api.b612kaji.com,*.oracle.bendingspoonsapps.com,user-snow-api.snow.me,us-central1-alight-creative.cloudfunctions.net,api.qonversion.io,api.esound.app,us-central1-muslim-pro-app.cloudfunctions.net,buy.itunes.apple.com,subscription.grammarly.com,order.creativeappnow.com,api.adapty.io,api-sub.meitu.com,api.picsart.com,*.wallpaperscraft.com,premium*.truecaller.com,nicegram.cloud,sub.store,ap*.intsig.net,app.monkeyuni.net,spclient.wg.spotify.com,*.googlevideo.com,youtubei.googleapis.com,*.camera360.com,api.chatgp5.cc,api.revenuecat.com
+hostname = %APPEND% api-sub.meitu.com, purchase-*-api.*.com, user-kaji-api.b612kaji.com,*.oracle.bendingspoonsapps.com,user-snow-api.snow.me,us-central1-alight-creative.cloudfunctions.net,api.qonversion.io,api.esound.app,us-central1-muslim-pro-app.cloudfunctions.net,buy.itunes.apple.com,subscription.grammarly.com,order.creativeappnow.com,api.adapty.io,api-sub.meitu.com,api.picsart.com,*.wallpaperscraft.com,premium*.truecaller.com,sub.store,ap*.intsig.net,app.monkeyuni.net,spclient.wg.spotify.com,*.googlevideo.com,youtubei.googleapis.com,*.camera360.com,api.revenuecat.com
