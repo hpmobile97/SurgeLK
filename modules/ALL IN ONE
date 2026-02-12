@@ -1,0 +1,62 @@
+#!name=𝓐𝓵𝓵 𝓘𝓷 𝓞𝓷𝓮 Stable Fix
+#!desc=Unlock + YouTube Stable + No PiP Bug
+
+[Panel]
+NetInfoPanel=title="",content="",style=info,script-name=net-info-panel.js,update-interval=1
+NetSpeed = script-name=NetSpeed,update-interval=-1
+
+[Host]
+ip-api.com = 208.95.112.1
+
+############################
+# RULE
+############################
+
+[Rule]
+IP-CIDR,0.0.0.0/32,REJECT,no-resolve
+
+############################
+# HEADER REWRITE
+############################
+
+[Header Rewrite]
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
+^https:\/\/spclient\.wg\.spotify\.com\/user-customization-service\/v1\/customize$ header-del if-none-match
+
+############################
+# URL REWRITE (SAFE)
+############################
+
+[URL Rewrite]
+^https?:\/\/[\w-]+\.googlevideo\.com\/.*&oad reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) reject-200
+
+############################
+# SCRIPT
+############################
+
+[Script]
+
+# Sub-Store
+Sub-Store Core=type=http-request,pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))),script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js,requires-body=true,timeout=120,ability=http-client-policy
+Sub-Store Simple=type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js,requires-body=true,timeout=120
+Sub-Store Sync=type=cron,cronexp=55 23 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
+
+# Spotify
+spotify-json = type=http-request,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
+spotify-proto = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
+
+# RevenueCat
+RevenueCat = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$),requires-body=1,script-path=https://raw.githubusercontent.com/libanhsxbaoil/zozocao/refs/heads/main/Scripts/revenuecat.js
+
+# Network Panel
+net-info-panel.js=script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/net.js,type=generic,timeout=30
+NetSpeed = type=generic,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/netspeed.js,argument=title=NetSpeed&iconfast=bolt&iconmid=hare&iconslow=tortoise
+
+############################
+# MITM (SAFE FIX)
+############################
+
+[MITM]
+hostname = %APPEND% api.revenuecat.com,spclient.wg.spotify.com,sub.store,*.googlevideo.com
