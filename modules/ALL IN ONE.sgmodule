@@ -1,5 +1,5 @@
-#!name=𝓐𝓵𝓵 𝓘𝓷 𝓞𝓷𝓮 + YouTube Fix
-#!desc=UnlockPremium + YouTube Stable PiP
+#!name=𝓐𝓵𝓵 𝓘𝓷 𝓞𝓷𝓮 Stable + YT Light
+#!desc=UnlockPremium + YouTube Stable (No Stream Break)
 
 [Panel]
 NetInfoPanel=title="",content="",style=info,script-name=net-info-panel.js,update-interval=1
@@ -9,14 +9,21 @@ NetSpeed = script-name=NetSpeed,update-interval=-1
 ip-api.com = 208.95.112.1
 
 ################################################
-# RULE (GIỮ NGUYÊN NHƯ CŨ NHƯNG KHÔNG CHẶN UDP)
+# RULE
 ################################################
 
 [Rule]
+# YouTube Ads Domain Block (Light)
+DOMAIN,googleads.g.doubleclick.net,REJECT
+DOMAIN,pagead2.googlesyndication.com,REJECT
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,googlesyndication.com,REJECT
+DOMAIN-SUFFIX,googleadservices.com,REJECT
+
 IP-CIDR,0.0.0.0/32,REJECT,no-resolve
 
 ################################################
-# HEADER REWRITE (GIỮ NGUYÊN)
+# HEADER REWRITE
 ################################################
 
 [Header Rewrite]
@@ -25,17 +32,17 @@ IP-CIDR,0.0.0.0/32,REJECT,no-resolve
 ^https:\/\/spclient\.wg\.spotify\.com\/user-customization-service\/v1\/customize$ header-del if-none-match
 
 ################################################
-# URL REWRITE (SAFE YOUTUBE)
+# URL REWRITE
 ################################################
 
 [URL Rewrite]
 
-^https?:\/\/[\w-]+\.googlevideo\.com\/.*&oad reject-200
+# YouTube tracking block (Safe)
 ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) reject-200
 ^https?:\/\/s\.youtube\.com\/api\/stats\/ads reject-200
 
 ################################################
-# SCRIPT (GIỮ NGUYÊN + THÊM YOUTUBE)
+# SCRIPT (GIỮ NGUYÊN CỦA BẠN)
 ################################################
 
 [Script]
@@ -44,13 +51,6 @@ IP-CIDR,0.0.0.0/32,REJECT,no-resolve
 Sub-Store Core=type=http-request,pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))),script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js,requires-body=true,timeout=120,ability=http-client-policy
 Sub-Store Simple=type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js,requires-body=true,timeout=120
 Sub-Store Sync=type=cron,cronexp=55 23 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
-
-# YouTube PATCH (THÊM MỚI)
-YouTube-Player = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/youtube.js
-
-YouTube-Browse = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/browse,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/youtube.js
-
-YouTube-Next = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/next,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/youtube.js
 
 # Spotify
 spotify-json = type=http-request,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
@@ -70,15 +70,8 @@ net-info-panel.js=script-path=https://raw.githubusercontent.com/lonely0811/olsd/
 NetSpeed = type=generic,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/netspeed.js
 
 ################################################
-# MAP LOCAL
-################################################
-
-[Map Local]
-^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=200
-
-################################################
 # MITM
 ################################################
 
 [MITM]
-hostname = %APPEND% api-sub.meitu.com, purchase-*-api.*.com, user-kaji-api.b612kaji.com,*.oracle.bendingspoonsapps.com,user-snow-api.snow.me,us-central1-alight-creative.cloudfunctions.net,api.qonversion.io,api.esound.app,us-central1-muslim-pro-app.cloudfunctions.net,buy.itunes.apple.com,subscription.grammarly.com,order.creativeappnow.com,api.adapty.io,api-sub.meitu.com,api.picsart.com,*.wallpaperscraft.com,premium*.truecaller.com,sub.store,ap*.intsig.net,app.monkeyuni.net,spclient.wg.spotify.com,*.googlevideo.com,youtubei.googleapis.com,*.camera360.com,api.revenuecat.com
+hostname = %APPEND% api-sub.meitu.com, purchase-*-api.*.com, user-kaji-api.b612kaji.com,*.oracle.bendingspoonsapps.com,user-snow-api.snow.me,us-central1-alight-creative.cloudfunctions.net,api.qonversion.io,api.esound.app,us-central1-muslim-pro-app.cloudfunctions.net,buy.itunes.apple.com,subscription.grammarly.com,order.creativeappnow.com,api.adapty.io,api-sub.meitu.com,api.picsart.com,*.wallpaperscraft.com,premium*.truecaller.com,sub.store,ap*.intsig.net,app.monkeyuni.net,spclient.wg.spotify.com,*.camera360.com,api.revenuecat.com,youtubei.googleapis.com,s.youtube.com
