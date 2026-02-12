@@ -3,9 +3,6 @@
 #!author=Custom Stable Fix
 #!version=3.0
 
-[General]
-https-decryption = true
-
 [Panel]
 NetInfoPanel = title=Network Info,style=info,script-name=net-info-panel.js,update-interval=1
 NetSpeed = script-name=NetSpeed,update-interval=2
