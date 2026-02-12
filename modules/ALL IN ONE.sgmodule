@@ -1,5 +1,5 @@
 #!name=𝓐𝓵𝓵 𝓘𝓷 𝓞𝓷𝓮
-#!desc=UnlockPremium (PiP Stable Final)
+#!desc=UnlockPremium (YouTube Clean - PiP Absolute Stable)
 
 [Panel]
 NetInfoPanel=title="",content="",style=info,script-name=net-info-panel.js,update-interval=1
@@ -9,18 +9,14 @@ NetSpeed = script-name=NetSpeed,update-interval=-1
 ip-api.com = 208.95.112.1
 
 [Rule]
-# Không chặn UDP để giữ PiP ổn định
+# Không chặn UDP
+# Không can thiệp YouTube
 
 [Header Rewrite]
 
 # RevenueCat
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
-
-# YouTube Tracking Block (KHÔNG đụng player)
-^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads reject-200
-^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) reject-200
-^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext reject-200
 
 # Spotify
 ^https:\/\/spclient\.wg\.spotify\.com\/user-customization-service\/v1\/customize$ header-del if-none-match
